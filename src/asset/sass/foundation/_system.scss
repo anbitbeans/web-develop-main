@@ -1,0 +1,172 @@
+@use "sass:math";
+/* system
+--------------------------- */
+
+// color system
+// ---------------------
+// General
+// -------------------------------------------------------------------
+
+// $fileRoot: '';
+// $fileRoot: '';
+// $assetsRoot: $fileRoot + '/assets';
+$breakpoint: 767;
+$contSpaceValue: 16;
+$innerContWidthValue: 1080;
+$contWidthValue: $innerContWidthValue + $contSpaceValue * 2;
+$contWidth: $contWidthValue + px;
+
+
+
+// Color
+// -------------------------------------------------------------------
+$themeColor: #13007c;
+$accentColor: #ef711d;
+$baseColor: #f1f3f5;
+//$borderColor: ;
+
+
+// Space
+// -------------------------------------------------------------------
+$sectSpaceValue: 80;
+$sectSpace: $sectSpaceValue + px;
+$moduleSpaceValue: 70;
+$moduleSpace: $moduleSpaceValue + px;
+
+//
+// sp
+//
+$sp_sectSpaceValue: 50;
+$sp_sectSpace: $sp_sectSpaceValue + px;
+$sp_moduleSpaceValue: 40;
+$sp_moduleSpace: $sp_moduleSpaceValue + px;
+
+// Interaction
+// -------------------------------------------------------------------
+
+//
+//Opacity
+//
+$hoverOpacity: .5;
+
+//
+//Transition
+//
+$transSpeed: .25s;
+
+// Text
+// -------------------------------------------------------------------
+$txtColor: #212121;
+
+//
+//Font-family
+//
+$ff_sans: "Noto Sans Japanese", sans-serif;
+//$ff__serif: "Noto Serif Japanese", serif;
+$ff_en: "Vollkorn", serif;
+
+//
+//Font-size
+$fz: 1.6rem;
+//Title等のサイズ
+$fz_h3: 2.2rem;
+$fz_h2: 2.8rem;
+$fz_h1: 3.4rem;
+//line-height
+$lh: 1.8;
+//SP
+$sp_fz: 1.4rem;
+//SP Title等
+$sp_fz_h2: 2rem;
+$sp_fz_h1: 2.7rem;
+//英数字見出し等のサイズ
+$sp_fz_AZ: 4.1rem;
+//line-height
+$sp_lh: 1.75;
+
+
+//
+//Font-weight
+$fw: 400;
+$fw__bold: 500;
+
+// responsive system
+// ---------------------
+// MediaQuaries
+// -------------------------------------------------------------------
+
+$breakpoints: (
+	"xss": "(max-width: 350px)",
+	"xs": "(max-width: 398px)",
+	"sm": "(max-width: 575px)",
+	"md": "(max-width: 767px)",
+	"nav": "(max-width: 920px)",
+	"document": "(max-width: 920px)",
+	"lg": "(max-width: 1100px)",
+	"xl": "(max-width: 1199px)",
+	"xll": "(max-width: 1399px)"
+);
+
+@mixin MQ($breakpoint: md) {
+	@media #{map-get($breakpoints, $breakpoint)} {
+	  @content;
+	}
+  }
+
+// Layouts
+// -------------------------------------------------------------------
+@mixin contentCentering(){
+    max-width: $contWidth;
+    padding-right: $contSpaceValue px;
+    padding-left: $contSpaceValue px;
+    margin-right: auto;
+    margin-left: auto;
+    @include MQ(md) {
+      max-width: 100%;
+    }
+  }
+
+@mixin FHA() {
+  #{&}:focus,
+  #{&}:hover,
+  #{&}:active{
+    @content;
+  }
+}
+
+@function autoSpace($num:0, $fz:$fz, $lh:$lh){
+    //px変換し、単位を除く値のみを取得
+    $fzValue: (math.div($fz, (floor($fz) * 2) % 2 + 1)) * 10;
+    @return $num - (math.div($lh * $fzValue - $fzValue, 2)) + px;
+  }
+  
+  @function sp_autoSpace($num:0, $fz:$sp_fz, $lh:$sp_lh){
+    $fzValue: (math.div($fz, (floor($fz) * 2) % 2 + 1)) * 10;
+    @return $num - (math.div($lh * $fzValue - $fzValue, 2)) + px;
+  }
+
+  @function autoEm($numerator, $denominator) {
+
+    @return math.div($numerator , $denominator) * 1em;
+  }
+/*
+  @function autoSpace2($num:0, $fz:$fz, $fz2:$fz, $lh:$lh, $lh2:$lh){
+    $fzValue: (math.div($fz2, (floor($fz2) * 2) % 2 + 1)) * 10;
+    $autoSpaceValue: $num - (math.div($lh * $fzValue - $fzValue, 2));
+  
+    $fz2Value: (math.div($fz2, (floor($fz2) * 2) % 2 + 1)) * 10;
+    $nextHalfLineHeight: math.div(($fz2Value * $lh2) - $fz2Value, 2);
+  
+    @return $autoSpaceValue - $nextHalfLineHeight + px;
+  }
+  
+  @function sp_autoSpace2($num:0, $fz:$sp_fz, $fz2:$sp_fz, $lh:$sp_lh, $lh2:$sp_lh){
+    $fzValue: (math.div($fz2, (floor($fz2) * 2) % 2 + 1)) * 10;
+    $autoSpaceValue: $num - (math.div($lh * $fzValue - $fzValue, 2));
+  
+    $fz2Value: (math.div($fz2, (floor($fz2) * 2) % 2 + 1)) * 10;
+    $nextHalfLineHeight: (($fz2Value * $lh2) - $fz2Value) / 2;
+  
+    @return $autoSpaceValue - $nextHalfLineHeight + px;
+  }
+  */

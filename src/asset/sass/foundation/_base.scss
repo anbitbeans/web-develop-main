@@ -1,0 +1,70 @@
+/* base
+--------------------------- */
+@use "./system" as *;
+
+/*! css-wipe | https://github.com/stackcss/css-wipe */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+	overflow: auto !important;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: $fz;
+	font-weight: 500;
+	color: $txtColor;
+	line-height: $lh;
+	letter-spacing: 0.005em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+	overflow-wrap: break-word;
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
+    background-color: #FFF;
+}
+h2,h3,h4,h5{
+    font-weight: normal;
+}
+h2 {
+	margin: 0;
+	font-size: 3.2rem;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+li {
+	list-style: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+    vertical-align: bottom;
+}
+
+em {
+	font-style: initial;
+}
+button:focus {
+	outline:0;
+}
+
+// a:hover{
+// 	opacity: 0.8;
+// }

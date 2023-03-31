@@ -1,0 +1,33 @@
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ogp -->
+<meta property="og:type" content="website" />
+<%_ if(meta.title) { _%>
+<title><%= meta.title%></title>
+<%_ }else{ _%>
+<title>サイトタイトル</title>
+<%_ } _%>
+<meta name="description" content="<%= meta.description %>" />
+<meta property="og:title" content="<%= meta.title%>" />
+<meta property="og:description" content="<%= meta.description %>" />
+<%_ if(meta.url) { _%>
+<meta property="og:url" content="https://traveler20.site/<%= meta.url %>" />
+<%_ }else{ _%>
+<meta property="og:url" content="https://traveler20.site/" />
+<%_ } _%>
+<!-- ogp-image -->
+<%_ if(meta.ogp) { _%>
+<meta property="og:image" content="https://traveler20.site/<%= meta.ogp %>" />
+<%_ }else{ _%>
+<meta
+    property="og:image"
+    content="https://traveler20.site/asset/img/ogp.webp"
+/>
+<%_ } _%>
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@traveler20site" />
+<link rel="icon" type="image/x-icon" href="<%= path%>asset/img/favicon.ico" />
+<!-- css -->
+<link rel="stylesheet" href="<%= path%>asset/css/style.css" />
